@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-      const user = JSON.parse(localStorage.getItem("user"));
+const user = JSON.parse(localStorage.getItem("user"));
+
 const ManageBusiness = () => {
   const [formData, setFormData] = useState({
     bussinessId:user.userId,
@@ -24,8 +25,8 @@ const ManageBusiness = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-       
-        const res = await fetch("http://localhost:8081/ManageBussiness/getDetails",{
+       const user = JSON.parse(localStorage.getItem("user"));
+        const res = await fetch("http://16.16.185.214:8081/ManageBussiness/getDetails",{
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify( user.userId ),
@@ -57,8 +58,8 @@ const ManageBusiness = () => {
 
   const handleSubmit = async () => {
     const url = isUpdate
-      ? "http://localhost:8081/ManageBussiness/saveBussinessDetails"
-      : "http://localhost:8081/ManageBussiness/saveBussinessDetails";
+      ? "http://16.16.185.214:8081/ManageBussiness/saveBussinessDetails"
+      : "http://16.16.185.214:8081/ManageBussiness/saveBussinessDetails";
     console.log(formData);
     try {
       const res = await fetch(url, {

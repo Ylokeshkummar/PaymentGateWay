@@ -21,7 +21,7 @@ const PaymentHeader = ({ userName = "Guest" }) => {
   return (
     <header className="payment-header">
       {/* Logo Section */}
-      <div className="logo" onClick={() => navigate("/")}>
+      <div className="logo" onClick={handleLogout}>
         💳 MyPayApp
       </div>
 

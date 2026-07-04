@@ -31,7 +31,7 @@ export default TransactionDetails;
 
 // Loader for fetching single transaction details
 export const TransactionDetailsLoader = async ({ params }) => {
-  const res = await fetch("http://localhost:8081/Payments/GetTransDeatails", {
+  const res = await fetch("http://16.16.185.214:8081/Payments/GetTransDeatails", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify( params.transactionId ),

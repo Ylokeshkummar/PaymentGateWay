@@ -9,7 +9,7 @@ export default defineConfig({
     proxy: {
       // All /api calls go to Spring Boot running on 8080
       '/api': {
-        target: 'http://localhost:8081',
+        target: 'http://16.16.185.214:8081',
         changeOrigin: true,
       }
     }

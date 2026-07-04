@@ -10,7 +10,7 @@ const TransactionsList = () => {
   useEffect(() => {
     const fetchAll = async () => {
       const user = JSON.parse(localStorage.getItem("user"));
-      const res = await fetch("http://localhost:8081/Payments/fetchTransactions", {
+      const res = await fetch("http://16.16.185.214:8081/Payments/fetchTransactions", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify( user.userId ),
@@ -24,7 +24,7 @@ const TransactionsList = () => {
   // ✅ Fetch filtered transactions only when user clicks Filter
 const handleFilter = async () => {
   const user = JSON.parse(localStorage.getItem("user"));
-  const url = `http://localhost:8081/Payments/fetchTransactionsfilter?id=${user.userId}&start=${encodeURIComponent(startDate)}&end=${encodeURIComponent(endDate)}`;
+  const url = `http://16.16.185.214:8081/Payments/fetchTransactionsfilter?id=${user.userId}&start=${encodeURIComponent(startDate)}&end=${encodeURIComponent(endDate)}`;
 
   const res = await fetch(url, {
     method: "POST",

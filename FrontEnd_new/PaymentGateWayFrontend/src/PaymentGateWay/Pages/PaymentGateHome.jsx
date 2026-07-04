@@ -10,7 +10,7 @@ const PaymentGateHome = () => {
     try {
       const payload = { email, password };
 
-      const response = await fetch("http://localhost:8081/api/auth/login", {
+      const response = await fetch("http://16.16.185.214:8081/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
