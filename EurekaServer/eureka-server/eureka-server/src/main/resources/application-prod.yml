@@ -1,0 +1,53 @@
+server:
+  port: ${SERVER_PORT:8761}
+  address: 0.0.0.0
+  shutdown: graceful
+
+spring:
+  application:
+    name: eureka-server
+  lifecycle:
+    timeout-per-shutdown-phase: 20s
+
+eureka:
+  client:
+    # A standalone Eureka server should not register with itself or fetch a registry.
+    register-with-eureka: ${EUREKA_REGISTER_WITH_EUREKA:false}
+    fetch-registry: ${EUREKA_FETCH_REGISTRY:false}
+    service-url:
+      defaultZone: ${EUREKA_DEFAULT_ZONE:http://16.16.185.214:8761/eureka/}
+  server:
+    # How often to run the evictor that removes expired (dead) instances (ms)
+    eviction-interval-timer-in-ms: 5000
+    enable-self-preservation: ${EUREKA_SELF_PRESERVATION:true}
+    renewal-percent-threshold: 0.85
+  instance:
+    hostname: ${EUREKA_HOSTNAME:16.16.185.214}
+    prefer-ip-address: true
+
+# Basic-auth credentials consumed by SecurityConfig; override in real deployments.
+security:
+  username: ${EUREKA_USERNAME:admin}
+  password: ${EUREKA_PASSWORD:Mom@1434}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when-authorized
+  probes:
+    enabled: true
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+
+logging:
+  level:
+    root: INFO
+    com.netflix.eureka: WARN
+    com.netflix.discovery: WARN
